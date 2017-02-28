@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateEmployee</title>
+</head>
+<body>
+    <script>
+        function ResetData()
+        {
+            document.getElementById("TxtFirstName").value = "";
+            document.getElementById("TxtLastName").value = "";
+            document.getElementById("TxtSalary").value = "";
+        }
+    </script>
+    <div> 
+        <!-- Les noms des champs utilisent les mêmes nom que notre classé modèle
+            Le model binder permet d'associer le nom d'un champs à une propriété de la classe-->
+        <form action="/Employee/SaveEmployee" method="post">
+            First Name: <input type="text" id="TxtFirstName" name="FirstName" value=""/> <span>@Html.ValidationMessage("FirstName")</span><br/>
+            Last Name: <input type="text" id="TxtLastName" name="LastName" value="" /> <span>@Html.ValidationMessage("LastName")</span><br />
+            Salary: <input type="text" id="TxtSalary" name="Salary" value="" /> <span>@Html.ValidationMessage("Salary")</span><br />
+            <input type="submit" name="BtnSubmit" value="Enregistrer" />
+            <input type="button" name="BtnReset" onclick="ResetData();" value="Réinitialiser" />
+            <input type="submit" name="BtnSubmit" value="Annuler" />
+        </form>
+    </div>
+</body>
+</html>
