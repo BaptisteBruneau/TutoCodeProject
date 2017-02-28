@@ -1,0 +1,33 @@
+﻿@using TutoCodeProject.ViewModels;
+@model EmployeeListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetView</title>
+</head>
+<body>
+    <a href="/Employee/AddNew">Ajouter un employé</a>
+    <div> 
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel empVM in Model.EmployeesList)
+            {
+                <tr>
+                    <td>@empVM.EmployeeName</td>
+                    <td style="background-color: @empVM.SalaryColor">@empVM.Salary</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
