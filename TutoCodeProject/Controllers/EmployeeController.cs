@@ -23,9 +23,11 @@ namespace TutoCodeProject.Controllers
             {
                 EmployeeViewModel empVM = new EmployeeViewModel();
                 empVM.EmployeeName = string.Format("{0} {1}", emp.Lastname, emp.FirstName);
-                empVM.Salary = emp.Salary.ToString("C");
-                if (emp.Salary > 10000)
-                    empVM.SalaryColor = "yellow";
+                empVM.Salary = emp.Salary.Value.ToString("C");
+                if (emp.Salary > 18000)
+                    empVM.SalaryColor = "green";
+                else
+                    empVM.SalaryColor = "red";
                 employeesListVM.Add(empVM);
             }
 
@@ -40,7 +42,7 @@ namespace TutoCodeProject.Controllers
         /// <returns></returns>
         public ActionResult AddNew()
         {
-            return View("CreateEmployee");
+            return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
         /// <summary>
@@ -61,8 +63,17 @@ namespace TutoCodeProject.Controllers
                         return RedirectToAction("Index");
                     }
                     else
+                    {
+                        CreateEmployeeViewModel createEmployeeVM = new CreateEmployeeViewModel();
+                        createEmployeeVM.FirstName = e.FirstName;
+                        createEmployeeVM.LastName = e.Lastname;
+                        if (e.Salary.HasValue)
+                            createEmployeeVM.Salary = e.Salary.ToString();
+                        else
+                            createEmployeeVM.Salary = ModelState["Salary"].Value.AttemptedValue;
                         //Demander à Emilien pourquoi le RedirectToAction ne garde pas les message alors que le return View oui? Qu'est ce qui est différent?
-                        return View("CreateEmployee");
+                        return View("CreateEmployee", createEmployeeVM);
+                    }
                 case "Annuler":
                     return RedirectToAction("Index");
                 default:

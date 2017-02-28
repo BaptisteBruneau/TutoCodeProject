@@ -1,4 +1,5 @@
-﻿
+﻿@using TutoCodeProject.ViewModels
+@model CreateEmployeeViewModel
 @{
     Layout = null;
 }
@@ -9,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CreateEmployee</title>
+    <script src="~/Scripts/Validation.js"></script>
 </head>
 <body>
     <script>
@@ -23,10 +25,10 @@
         <!-- Les noms des champs utilisent les mêmes nom que notre classé modèle
             Le model binder permet d'associer le nom d'un champs à une propriété de la classe-->
         <form action="/Employee/SaveEmployee" method="post">
-            First Name: <input type="text" id="TxtFirstName" name="FirstName" value=""/> <span>@Html.ValidationMessage("FirstName")</span><br/>
-            Last Name: <input type="text" id="TxtLastName" name="LastName" value="" /> <span>@Html.ValidationMessage("LastName")</span><br />
-            Salary: <input type="text" id="TxtSalary" name="Salary" value="" /> <span>@Html.ValidationMessage("Salary")</span><br />
-            <input type="submit" name="BtnSubmit" value="Enregistrer" />
+            First Name: <input type="text" id="TxtFirstName" name="FirstName" value="@Model.FirstName"/> <span>@Html.ValidationMessage("FirstName")</span><br/>
+            Last Name: <input type="text" id="TxtLastName" name="LastName" value="@Model.LastName" /> <span>@Html.ValidationMessage("LastName")</span><br />
+            Salary: <input type="text" id="TxtSalary" name="Salary" value="@Model.Salary" /> <span>@Html.ValidationMessage("Salary")</span><br />
+            <input type="submit" name="BtnSubmit" value="Enregistrer" onclick="return IsValid();" />
             <input type="button" name="BtnReset" onclick="ResetData();" value="Réinitialiser" />
             <input type="submit" name="BtnSubmit" value="Annuler" />
         </form>

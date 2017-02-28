@@ -10,7 +10,7 @@ namespace TutoCodeProject.DataAccessLayer
     {
         public DbSet<Employee> Employees { get; set; }
 
-        public SalesERPDAL() : base("Data Source=(local); Initial Catalog=SalesERPDB; Integrated Security=True")
+        public SalesERPDAL()
         {
 
         }

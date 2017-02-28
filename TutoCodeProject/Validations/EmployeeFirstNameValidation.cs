@@ -14,8 +14,8 @@ namespace TutoCodeProject.Validations
                 return new ValidationResult("Ce champ est obligatoire");
             else
             {
-                if(value.Equals("Baptiste"))
-                    return new ValidationResult("Tu ne peux pas porter le nom de Dieu");
+                if(value.ToString().Contains("@"))
+                    return new ValidationResult("FirstName ne peut pas comporter d'@");
             }
             return ValidationResult.Success;
         }
