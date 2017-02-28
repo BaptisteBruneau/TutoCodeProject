@@ -14,7 +14,7 @@ namespace TutoCodeProject.Validations
                 return new ValidationResult("Ce champ est obligatoire");
             else
             {
-                if(value.Equals("Baptisteds"))
+                if(value.Equals("Baptiste"))
                     return new ValidationResult("Tu ne peux pas porter le nom de Dieu");
             }
             return ValidationResult.Success;
