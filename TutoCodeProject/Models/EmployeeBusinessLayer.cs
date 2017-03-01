@@ -21,5 +21,14 @@ namespace TutoCodeProject.Models
             salesDAL.SaveChanges();
             return e;
         }
+
+        public bool IsValidUser(UserDetails u)
+        {
+            bool isValid = false;
+            if (!string.IsNullOrEmpty(u.UserName) && !string.IsNullOrEmpty(u.Password))
+                isValid = u.UserName.Equals("Admin") && u.Password.Equals("Admin") ? true : false;
+
+            return isValid;
+        }
     }
 }

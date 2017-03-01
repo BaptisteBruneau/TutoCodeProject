@@ -14,9 +14,11 @@ namespace TutoCodeProject.Controllers
         /// Envoi la liste des salariés à la vue Index.cshtml
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         public ActionResult Index()
         {
             EmployeeListViewModel empListVM = new EmployeeListViewModel();
+            empListVM.UserName = User.Identity.Name;
             List<EmployeeViewModel> employeesListVM = new List<EmployeeViewModel>();
 
             foreach(Employee emp in new EmployeeBusinessLayer().GetEmployee())
