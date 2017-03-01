@@ -23,8 +23,8 @@ function IsLastNameEmpty()
 }
 
 function IsLastNameGreatherThanFive() {
-    if (document.getElementById("TxtLastName").value.length >= 5)
-        return "Le champ LastName ne doit pas être supérieur à 5";
+    if (document.getElementById("TxtLastName").value.length >= 6)
+        return "Le champ LastName ne doit pas être supérieur à 6";
     else
         return "";
 }
